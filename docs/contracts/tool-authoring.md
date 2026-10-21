@@ -38,7 +38,7 @@ dfmcp tool test hello --args '{ "name": "World" }'
 - Tools may not directly modify client grants, trusted plugin state, or gateway audit records.
 
 ## Trust and safety
-Installing a tool stages its code for inspection; it does not execute the tool's startup hooks. Explicit trust is required before activation, and authorization is separately granted to clients. If approval cannot be obtained from a trusted local human interface, high-risk invocations are denied. Signed provenance may be added later, but user approval is not a substitute for OS isolation.
+Installing a tool stages its code for inspection; it does not execute the tool's startup hooks. Explicit trust is required before activation, and authorization is separately granted to clients. If approval cannot be obtained from a trusted local human interface, high-risk invocations are denied. DEC-006 owner-selected: SHA-256 content pinning and explicit local owner trust are mandatory; third-party publisher signatures are not mandatory for the first release. Hashes detect changes to pinned bytes but do not establish source identity or software safety. Any displayed publisher-signature claim is informational and confers no authority. C-002 must specify deterministic package digest canonicalization, handling of symlinks/junctions, and launch-time digest checks before freeze. Trust, enablement, grants, approvals and OS isolation remain independent controls.
 
 ## Phase 0 qualification criteria
 1. A trivial user-authored tool can be added with no gateway code edits.
