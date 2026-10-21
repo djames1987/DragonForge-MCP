@@ -29,14 +29,10 @@ Target: create a Python function, attach metadata with an SDK decorator, run val
 Localhost is not an authentication boundary. Validate Origin/Host for HTTP, authenticate each client, verify permission at discovery and execution, avoid secrets in logs, reject path escapes, require approval for sensitive mutations, and never treat subprocess execution alone as sandboxing. Approval cannot be self-asserted by an AI agent. Third-party code is untrusted and requires real OS-backed isolation for sensitive use cases.
 
 ## Documentation-first development
-Architecture decisions and contracts precede production implementation. No phase advances without tests and independently reproducible qualification evidence. See [development rules](docs/DEVELOPMENT_RULES.md).
+**Owner-approved mandatory gates (2026-10-21): No coding of any kind until the entire project from start to finish is specified, cross-reviewed, frozen, and explicitly authorized by the owner.** Before every phase, audit the previous phase, development rules, and roadmap for drift. GitHub Actions may run **only on user-controlled local/self-hosted runners**; until available, the owner may conduct reproducible manual tests on Windows. See [binding development rules](docs/DEVELOPMENT_RULES.md), [full roadmap](docs/ROADMAP.md), and [AI agent instructions](AGENTS.md).
 
 ## Phase roadmap
-0. Requirements, ADRs, threat model, custom-tool lifecycle and protocol contracts; review and freeze.
-1. Secure gateway, identity, permissions, SQLite migrations, trivial test tool, interoperability qualification.
-2. Tool registry, CLI authoring/install workflow, worker protocol, lifecycle and isolation.
-3. Scoped files, development and diagnostics tools; multi-client negative security tests.
-4. Performance, recovery, packaging and Windows acceptance tests.
+The [full lifecycle roadmap](docs/ROADMAP.md) governs Phases 0–5. Phase 0 must fully specify all planned phases before any implementation begins.
 
 ## Non-goals for initial release
 Internet-facing hosting, automatic third-party plugin downloads/execution, GUI-first administration, unrestricted shell access, and integration with any other DragonForge project by default.
