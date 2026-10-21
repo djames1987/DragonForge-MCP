@@ -1,16 +1,16 @@
 # MCP protocol compatibility contract — PROPOSED v0.1
 
-**Identifier:** C-010. **Authority:** Phase 0 proposal only. Depends on ADR-001 / DEC-001 and `docs/DEVELOPMENT_RULES.md`. No implementation permission.
+**Identifier:** C-010. **Authority:** Phase 0 proposal only. Uses owner-selected DEC-001 modern-only profile and `docs/DEVELOPMENT_RULES.md`. No implementation permission.
 
 ## Normative sources and pinned candidate
-Proposed primary protocol baseline: **2026-07-28** (released specification). Consult the versioned normative specification and schemas at https://modelcontextprotocol.io/specification/2026-07-28 and https://github.com/modelcontextprotocol/modelcontextprotocol . A release blog is explanatory, **not** a substitute for exact versioned normative text. Official July 28 announcement: https://blog.modelcontextprotocol.io/posts/2026-07-28/ . Historical comparison: 2025-11-25 at https://modelcontextprotocol.io/specification/2025-11-25 . Before ratification, record exact spec URL, schema commit and conformance-suite revision, validate accessible normative paragraphs and test each wire example.
+Selected initial release protocol baseline: **2026-07-28** (released specification). Consult the versioned normative specification and schemas at https://modelcontextprotocol.io/specification/2026-07-28 and https://github.com/modelcontextprotocol/modelcontextprotocol . A release blog is explanatory, **not** a substitute for exact versioned normative text. Official July 28 announcement: https://blog.modelcontextprotocol.io/posts/2026-07-28/ . Historical comparison: 2025-11-25 at https://modelcontextprotocol.io/specification/2025-11-25 . Before ratification, record exact spec URL, schema commit and conformance-suite revision, validate accessible normative paragraphs and test each wire example.
 
 ## Design-choice boundary
-Proposed default: one modern `2026-07-28` HTTP implementation; optional 2025 compatibility **only as a separate version adapter** after owner chooses DEC-001 and a specific client matrix justifies it. Never advertise an unimplemented protocol version. Client-provided `_meta` identity is descriptive, never an authentication assertion. Authorization is always by C-001's gateway-verified principal.
+Owner-selected initial release: one modern `2026-07-28` implementation, with **no** 2025 compatibility adapter, no implicit fallback and no mixed-era negotiation. Future legacy support requires separate owner-approved scope and completed conformance tests. Never advertise an unimplemented protocol version. Client-provided `_meta` identity is descriptive, never an authentication assertion. Authorization is always by C-001's gateway-verified principal.
 
 ## Version behavior table
 
-| Aspect | 2026-07-28 proposed modern adapter | 2025-11-25 optional separate legacy adapter |
+| Aspect | 2026-07-28 proposed modern adapter | 2025-11-25 EXCLUDED from initial release (comparison only) |
 |---|---|---|
 | Establishment | Stateless JSON-RPC requests; no initialize handshake | initialize negotiation followed by initialized notification |
 | Discovery | Implement server/discover according to modern normative contract | No substitution of server/discover for initialize |
@@ -42,8 +42,8 @@ The initial release must enumerate every normative core method and notification 
 - **T-004a:** known-good modern `server/discover` request and valid modern tools/list; verify full expected schema, version and absence of legacy session establishment.
 - **T-004b:** modern request wrongly containing initialize/session assumptions; verify normative reject/no fallback, no worker launch.
 - **T-004c:** unsupported protocol version, absent/mismatched method routing headers or body method mismatch; verify version-specific wire failure, no worker launch, audit-safe outcome.
-- **T-004d:** if legacy enabled, initialize/initialized with a valid supported version and subsequent tools/list and tools/call; verify no modern-only headers required.
-- **T-004e:** if legacy disabled, legacy handshake must not enable any tool or create a principal.
+- **T-004d:** negative fixture sends legacy initialize/initialized handshake; verify no authenticated tool access and the specified version error.
+- **T-004e:** confirm server does not advertise 2025-11-25 as supported, and creates no legacy transport session.
 - **T-005a:** client lists a tool, administrator revokes grant, client submits cached tools/call; deny without worker execution.
 - **T-021a:** Host mismatch, hostile Origin, and preflight/browser-rebinding fixtures fail before tool discovery.
 - **T-026a:** probe unsupported optional methods/extensions and verify advertised capabilities are truthful.
@@ -51,7 +51,7 @@ The initial release must enumerate every normative core method and notification 
 Each test above needs concrete raw requests, JSON schema assertions, HTTP status/error behavior, host/build/fixture digest, and exact expected responses derived from the selected pinned normative spec. These are **named scenarios, not completed reproducible tests**.
 
 ## Remaining decisions before freeze
-- DEC-001: exact adapter set and support lifetime.
+- DEC-001 adapter selection is resolved: 2026-07-28 only for initial release. The exact normative wire contract and release conformance artifacts are still required before freeze.
 - Whether STDIO bridges use modern protocol directly or strictly translate through one gateway-adapter contract; which installed client versions actually interoperate.
 - Conformance-suite revision, exact positive/negative transcripts, transport MIME/streaming behavior, cancellation and notification behavior.
 - Complete version-specific JSON-RPC error mapping, optional capability inventory, message-size and time budgets.
