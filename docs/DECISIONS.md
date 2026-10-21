@@ -3,11 +3,11 @@
 Owner-approved product decisions from README.md on 2026-10-21: on-demand server, explicit sensitive-action approval with default deny if unavailable, manual third-party installation and trust, CLI first, simple tool extensibility, Windows 10 first, local only. Technical decisions below are NOT automatically owner-approved.
 
 ## ADR-001 — MCP revision compatibility
-Status: PROPOSED, BLOCKING.
+Status: OWNER-DIRECTED CHOICE RECORDED 2026-10-21 (DEC-001); detailed C-010 completion and architecture freeze remain pending.
 Context: The MCP 2026-07-28 revision uses server/discover and no protocol-level handshake/session; 2025-11-25 uses initialize and may involve session IDs. Combining semantics by accident creates failures and security gaps.
-Proposal: use 2026-07-28 as normative modern baseline; support 2025-11-25 through explicitly separate compatibility behavior only if required by tested local clients. Return defined protocol errors for unsupported versions. No assumption that the old handshake is required in modern mode.
+Decision DEC-001: **Support MCP 2026-07-28 only in the initial release.** Pin the released revision for HTTP and STDIO semantics. No legacy 2025-11-25 adapter in initial release, no automatic fallback, and no hybrid handshake. Reject unsupported versions according to exact released normative contract. Any later 2025 compatibility is a separately scoped, approved, implemented and qualified adapter, never an implicit promise.
 Alternatives: 2025-only (broader legacy host reach, aging baseline); modern-only (simpler, excludes legacy hosts); explicit dual-era adapter (more test work).
-Consequences: maintain a two-era protocol matrix if selected. Security: authenticate each request, independent of transport session. Qualification: T-004, T-026 and cross-era transcripts.
+Consequences: simpler, auditable version boundary but older clients may not connect; record interoperability exclusions and do not claim universal client compatibility. Authenticate every request independently from transport/client metadata. Qualification: T-004,T-026 with modern and explicit legacy-rejection transcripts. Released source: https://modelcontextprotocol.io/specification/2026-07-28 ; https://blog.modelcontextprotocol.io/posts/2026-07-28/ .
 References: https://modelcontextprotocol.io/specification/draft/changelog ; https://py.sdk.modelcontextprotocol.io/whats-new/ (verify pinned released normative text before ratification).
 
 ## ADR-002 — Gateway/worker split
@@ -43,10 +43,13 @@ Status: OPEN, non-blocking for initial drafting but required for freeze.
 Choose agreed hardware tier, tool fixture count, concurrency, resource thresholds, retention, backup interval and crash/restore targets; then derive measurable qualification.
 
 ## Owner ratification questions
-DEC-001 Modern-only or verified dual-era MCP?
+DEC-001 RESOLVED by owner direction: modern-only 2026-07-28 in v1; older revisions excluded unless a future separately approved change adds them.
 DEC-002 Concrete local client identity credential provisioning/rotation mechanism?
 DEC-003 Owner approval UX: authenticated CLI pending-request flow or separate desktop UI?
 DEC-004 Exact Windows security target, measured OS containment, and release resource thresholds?
 DEC-005 Default retention and backup lifecycle?
-DEC-006 Signed provenance requirement for third-party packages vs local SHA-256 trust alone?
-Do not mark accepted before owner explicitly approves.
+DEC-006 RESOLVED by owner direction: initial release uses **mandatory SHA-256 content pinning and explicit local owner trust**, without mandatory third-party publisher signatures or certificate infrastructure. Optional signature data can be displayed as untrusted informational metadata; it does not bypass digest validation, local owner trust, enablement, grants, approval or isolation. If source attribution is essential for a deployment, the owner must verify publisher separately before trusting. Signing enforcement requires a separate approved versioned policy and qualification.
+DEC-001 and DEC-006 were selected under the owner's explicit instruction to use agent recommendations (2026-10-21). Other decisions remain OPEN and no project-wide documentation freeze is approved.
+
+## DEC-006 — package provenance tradeoff and qualification
+Status: OWNER-DIRECTED CHOICE RECORDED 2026-10-21. Signing is not required for initial release. A cryptographic digest detects modification relative to the pinned bytes **but does not prove who authored those bytes or whether they are safe**. Each complete staged package must be hashed by a deterministic byte-accurate scheme defined in C-002; package paths, symlinks, embedded digest field, canonical encoding and time-of-check/time-of-use are freeze blockers. Trust is a privileged owner-reviewed operation tied to exact (tool ID, version, SHA-256, capabilities), and is invalidated by byte changes. SHA-256 pinning, owner trust, enablement and per-client grants remain separate. Negative fixtures T-008/T-009/T-022 must exercise mutations, reparse points and substitution races. Future signed provenance requires formal scope review, key lifecycle, revocation and authenticity qualification; no unvalidated claimed signature may confer privileges.
