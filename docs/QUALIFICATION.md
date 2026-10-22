@@ -39,3 +39,10 @@ Phase 1: T-001..T-006, T-021,T-026. Phase 2: T-007..T-013,T-020,T-022. Phase 3: 
 
 ## Missing before freeze
 Precise fixtures, executable test commands, MCP transcripts per revision, performance workload/percentiles, threat probe methods, supported hardware/OS matrix and verified local runner security are not complete. This matrix is an index, NOT an executable qualification specification.
+
+## Detailed planned suites
+- [Windows confinement qualification](security/windows-confinement-qualification.md), WQ-001 through WQ-012, require independently observed OS denials and build-specific evidence.
+- [SQLite authority schema](contracts/sqlite-authority-schema.md), Q-DB-01 through Q-DB-08, specify integrity, writer races, atomic transactions, recovery and faults.
+- [CLI contract](contracts/administrative-cli.md), CLI-Q-01 through CLI-Q-10, specify command output, owner authentication, key and corruption safety.
+- [Full R/T traceability](PHASE0_REQUIREMENT_TRACEABILITY.md) preserves the R-001..026 and T-001..026 crosswalk.
+All statuses remain PLANNED. Do not claim test PASS from documentation.
