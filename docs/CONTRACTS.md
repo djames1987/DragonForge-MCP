@@ -63,3 +63,10 @@ These supplement rather than replace earlier contract documents. Contract comple
 - [CLI-001..054 JSON Schema registry](contracts/cli-command-schema-registry-v1.json) provides command-specific outer IPC request and success envelopes; some nested payload schemas still need detailed closure.
 - [C-010B source-verified protocol conformance](contracts/mcp-2026-07-28-conformance-addendum.md) clarifies required HTTP headers, parameter annotations, error codes and STDIO behavior.
 - [Independent reconciliation audit](PHASE0_SEVEN_WORKSTREAM_RECONCILIATION_AUDIT_2026-10-22.md) lists remaining blockers explicitly. No document in this section represents executed tests or architecture-freeze approval.
+
+## Authoritative Phase 0 consolidation — 2026-10-22
+- [C-005 definitive proposed SQLite migration](contracts/sqlite-authoritative-v1.md) replaces additive/inconsistent C-005A/B/C schema fragments for any later implementation. Older docs remain design history, not a second migration to execute.
+- [C-007C administrative authorization and backup key format](contracts/cli-security-key-formats-v1.md) adds owner confirmation, protected credential delivery, AEAD backup and Argon2id key export.
+- [WIN-SEC-003 Windows supported-profile candidate](security/windows-enforcement-profile-v1.md) narrows candidate build and specifies OS boundary/negative evidence; this remains unqualified.
+- [Q-EXEC-001 future qualification command contract](QUALIFICATION_EXECUTION_CONTRACT_V1.md) lists proposed (not yet implemented) future T-001..026 commands.
+- [Final-pass audit](PHASE0_FINAL_PASS_AUDIT_2026-10-22.md) explicitly records remaining freeze blockers. No test execution or Phase 1 permission.
