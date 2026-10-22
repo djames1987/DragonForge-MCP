@@ -41,3 +41,6 @@ Propose gateway administration responses <= 1000ms p95 under idle local conditio
 
 ## Rule of change
 When adding/revising R IDs, update CONTRACTS, QUALIFICATION, IMPLEMENTATION_PLAN, relevant ADRs and architecture change log in same PR. Do not reuse retired identifiers.
+
+## Phase 0 detailed contract crosswalk
+The canonical [requirements traceability matrix](PHASE0_REQUIREMENT_TRACEABILITY.md) maps R-001 through R-026 to architecture components, detailed contracts, Phases 1–5, qualification IDs and measurable acceptance. DEC-005's selected 90-day audit metadata retention supersedes the older proposed 30-day metadata retention figure above for planning; this is not owner freeze approval. The matrix is a documentation mapping, not executed test evidence.
