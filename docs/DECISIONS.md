@@ -53,3 +53,16 @@ DEC-001 and DEC-006 were selected under the owner's explicit instruction to use 
 
 ## DEC-006 — package provenance tradeoff and qualification
 Status: OWNER-DIRECTED CHOICE RECORDED 2026-10-21. Signing is not required for initial release. A cryptographic digest detects modification relative to the pinned bytes **but does not prove who authored those bytes or whether they are safe**. Each complete staged package must be hashed by a deterministic byte-accurate scheme defined in C-002; package paths, symlinks, embedded digest field, canonical encoding and time-of-check/time-of-use are freeze blockers. Trust is a privileged owner-reviewed operation tied to exact (tool ID, version, SHA-256, capabilities), and is invalidated by byte changes. SHA-256 pinning, owner trust, enablement and per-client grants remain separate. Negative fixtures T-008/T-009/T-022 must exercise mutations, reparse points and substitution races. Future signed provenance requires formal scope review, key lifecycle, revocation and authenticity qualification; no unvalidated claimed signature may confer privileges.
+
+## Delegated Phase 0 technical selections — 2026-10-22
+
+Authority: owner delegation recorded in current Phase 0 handoff. **Status: SELECTED — AGENT-DELEGATED AUTHORITY, NOT FROZEN.** Detailed selected designs, rejected alternatives, security limitations, tests, and outstanding contract ratification are in [PHASE0_DELEGATED_DECISIONS_2026-10-22.md](PHASE0_DELEGATED_DECISIONS_2026-10-22.md).
+
+- **DEC-001** retained (owner selected): MCP 2026-07-28 only.
+- **DEC-002** selected (agent delegated): individually owner-enrolled bearer principals, keyed protected credential verification, 90-day credential lifetime, short explicit rotation overlap, immediate revocation and protected STDIO adapter identity.
+- **DEC-003** selected (agent delegated): independently OS-authenticated trusted owner CLI and restrictive local admin named-pipe channel; canonical, invocation-bound, expiring, single-use SQLite-atomic approvals.
+- **DEC-004** selected (agent delegated, subject to OS-mechanism qualification): AppContainer baseline + ACL/broker controls + Job Objects + validated IPC, denying all unsupported third-party confinement profiles.
+- **DEC-005** selected (agent delegated): 90-day audit metadata policy, daily encrypted local backups, 30 recovery points, weekly restoration drill and provisional measurable recovery targets.
+- **DEC-006** retained (owner selected): SHA-256 content verification + explicit owner trust, no mandatory publisher signatures.
+
+**Precedence:** The earlier OPEN/PROPOSED entries above are retained as historical draft rationale; where inconsistent with this delegated selection, the decision selection above applies for Phase 0 drafting only. The detailed contracts, SQL DDL, threat model, fixtures, tests and implementation plan must still be reconciled before an architecture freeze. No owner approval of freeze or Phase 1 implementation has been issued. No security test has been executed merely by documenting a selection.
