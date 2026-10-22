@@ -39,3 +39,10 @@ Each policy decision records UTC time, immutable correlation ID, authenticated p
 
 ## Contract completion gate
 C-001 through C-009 are sketches with known undecided details; NOT implementation-ready. Phase 0 freeze requires detailed schema grammar, API signatures, DDL, transaction matrices, negative-case examples, performance limits and cross-contract test coverage, all reviewed against selected MCP revision.
+
+## New Phase 0 supplemental specifications
+- C-005A: [SQLite schema and transaction contract](contracts/sqlite-authority-schema.md).
+- C-007A: [Administrative CLI command catalog](contracts/administrative-cli.md).
+- WIN-QUAL-001: [Windows isolation qualification](security/windows-confinement-qualification.md).
+- [Requirement-to-test traceability](PHASE0_REQUIREMENT_TRACEABILITY.md).
+These proposed documents are not security qualification results or freeze approval.
