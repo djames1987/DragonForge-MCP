@@ -46,3 +46,14 @@ C-001 through C-009 are sketches with known undecided details; NOT implementatio
 - WIN-QUAL-001: [Windows isolation qualification](security/windows-confinement-qualification.md).
 - [Requirement-to-test traceability](PHASE0_REQUIREMENT_TRACEABILITY.md).
 These proposed documents are not security qualification results or freeze approval.
+
+## Phase 0 seven-workstream completion documentation (2026-10-22)
+- [C-005B/C-008 recovery atomicity](contracts/recovery-atomicity-v1.md) — checkpoint outbox, crash matrix, stale restore rekey.
+- [WIN-SEC-002 Windows enforcement](security/windows-enforcement-v1.md) — exact API and security control design, WQ matrix.
+- [C-007B CLI request and result schemas](contracts/cli-json-schemas-v1.md) — CLI-001..054 output typing and identity boundary.
+- [C-001A/C-003A identity and worker IPC](contracts/identity-ipc-v1.md) — enrollment, credentials, channel/handle rules.
+- [C-010A MCP 2026-07-28 wire](contracts/mcp-2026-07-28-wire-v1.md) — pinned modern-only messages and negative transcripts.
+- [C-008A operations and qualification](OPERATIONS_QUALIFICATION_PHASES_V1.md) — Windows operational lifecycle and T-001..026 roadmap.
+- [Independent cross-document audit](PHASE0_INDEPENDENT_CROSS_DOCUMENT_AUDIT_2026-10-22.md) — unresolved blocks and readiness classification.
+
+These supplement rather than replace earlier contract documents. Contract completeness and executable qualification are not implied by document creation.
