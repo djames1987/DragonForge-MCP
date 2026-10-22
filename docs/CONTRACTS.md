@@ -25,6 +25,9 @@ Only gateway storage module may write SQLite. Proposed tables: schema_migrations
 ## C-006 Human approval
 A sensitive invocation is placed in WAITING_APPROVAL state, owner interface displays caller identity, tool/digest, exact effect, arguments (redacted as necessary), scope and expiry. Owner independently authenticates to management interface; decision signed/bound by gateway to pending request with single-use nonce. Reject client-originated approval tokens, reused approvals, expired approvals and argument/digest changes. Deny if trusted interface unavailable. Exact UI/IPC provenance is an open ADR.
 
+### C-006A — Single-use trusted owner approval (selected delegated detail)
+See [contracts/owner-approval-and-admission.md](contracts/owner-approval-and-admission.md) for immutable approval binding, RFC 8785 argument fingerprints, admin named-pipe identity checks, atomic admission transaction, and negative-case fixture IDs. C-005 SQL schema, anti-rollback restore reconciliation and Windows pipe verification remain freeze blockers; these are documented design choices, not implemented security guarantees.
+
 ## C-007 Administration CLI
 Proposed root command `dfmcp`; groups `server`, `config`, `client`, `tool`, `policy`, `audit`, `db`, `backup`, `diagnostics`. Existing proposed examples remain non-executable documentation. All mutating commands accept explicit `--json` output, never print secret after issuance, and require locally authenticated administrative context. Draft exit codes: 0 success, 2 usage/validation, 3 not found, 4 denied, 5 conflict, 6 temporarily unavailable, 7 operation failed, 8 recovery required. Exact subcommands/arguments, help strings, JSON schema, and noninteractive behavior remain MISSING.
 
