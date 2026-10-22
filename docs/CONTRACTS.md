@@ -57,3 +57,9 @@ These proposed documents are not security qualification results or freeze approv
 - [Independent cross-document audit](PHASE0_INDEPENDENT_CROSS_DOCUMENT_AUDIT_2026-10-22.md) — unresolved blocks and readiness classification.
 
 These supplement rather than replace earlier contract documents. Contract completeness and executable qualification are not implied by document creation.
+
+## Phase 0 seven-workstream reconciliation addenda
+- [C-005C recovery checkpoint publication and reconciliation](contracts/recovery-reconciliation-v1.md) clarifies cross-resource non-atomicity, fail-closed restore, and migration deltas.
+- [CLI-001..054 JSON Schema registry](contracts/cli-command-schema-registry-v1.json) provides command-specific outer IPC request and success envelopes; some nested payload schemas still need detailed closure.
+- [C-010B source-verified protocol conformance](contracts/mcp-2026-07-28-conformance-addendum.md) clarifies required HTTP headers, parameter annotations, error codes and STDIO behavior.
+- [Independent reconciliation audit](PHASE0_SEVEN_WORKSTREAM_RECONCILIATION_AUDIT_2026-10-22.md) lists remaining blockers explicitly. No document in this section represents executed tests or architecture-freeze approval.
