@@ -10,6 +10,9 @@ Manifest fields: `schema_version` (integer), `tool_id` (lowercase dot-namespaced
 
 Registry key = (tool_id, SemVer, digest). Proposed lifecycle: STAGED -> VALIDATED -> TRUSTED -> ENABLED; DISABLED and REVOKED stop invocation; REMOVED only after no active reference. No skipped transitions. Trust approval includes reviewing fingerprint and requested capabilities. Permissions granted to client are distinct records and never implied by registry state.
 
+### C-002A — Byte-exact package integrity and lifecycle (selected delegated detail)
+The normative detailed proposal is [contracts/package-integrity-and-lifecycle.md](contracts/package-integrity-and-lifecycle.md). It selects a precisely byte-framed digest stream with fixed-width manifest digest placeholder, immutable snapshot staging, trust/enable/grant separation and re-verification before execution. C-002A supplements but does not yet fully reconcile all C-002 lifecycle and schema details; cross-document qualification and Windows loader verification remain freeze blockers. Do not treat the selection as an executed security test.
+
 ## C-003 Execution envelope
 Internal request: `contract_version`, `invocation_id` (gateway-minted UUID), `tool_id`, `tool_version`, `digest`, `deadline_monotonic_ms`, `input`, `capability_tokens` (gateway-issued opaque handles, not raw broad credentials), `correlation_id`. Worker response: same invocation ID, `status` (ok|tool_error|cancelled|deadline|crashed), `output` on success or stable error code on failure, `duration_ms`. Framing must be explicitly length-delimited, maximum-size enforced, authenticated against the expected spawned worker, and strict about unsolicited responses. Persisted idempotency keys are scoped to principal + tool digest + key. Non-idempotent side effects are NEVER automatically retried after ambiguous failure. A timeout cannot guarantee that external side effects were rolled back.
 
