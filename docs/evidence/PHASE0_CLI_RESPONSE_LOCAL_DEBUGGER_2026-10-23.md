@@ -1,0 +1,9 @@
+# Phase 0 local-debugger CLI response schema validation — 2026-10-23
+
+The owner explicitly requested use of the connected Local Debugger plugin for local debugging. A live tool run occurred on Windows-10-10.0.19045-SP0, session `bee6fbc2-319e-4d34-a753-7bf45b28efe9`, work root `C:\DragonForge-MCP`. Tool job `57b61d24-dcc0-466b-8c38-39d008699d7e`, launched `C:\DragonForge-MCP\.phase0-validation\Scripts\python.exe -c <temporary inline validation source>`. Job completed `exit_code=0`, elapsed 1.109s, stderr empty, stdout not truncated.
+
+The script checked `Draft202012Validator.check_schema` on the committed CLI registry and, for each CLI-001..054, generated one schema-valid success payload, checked it against its specific schema with the root `$defs` present, then injected an unexpected `data` field and required rejection. Also tested the common `ErrorResult` payload and rejected an injected `error.secret`. All CLI-001..054 output PASS; error PASS; terminal stdout `TOTAL 54 /54`.
+
+**PASS scope:** 54 representative success-response fixtures; one negative additional-data-field fixture each; standard error response plus one negative injected-secret-field fixture. **Not included:** all optional and boundary cases, actual runtime CLI command implementation, secret handling behavior, owner token provenance or Windows containment. No project test code or GitHub Actions workflow created. The local connection has owner permissions; output is tool-reported evidence (not signed independent CI attestation).
+
+GitHub branch prior to evidence commit: `a5a97f89b88c229118e378ae0e859ba126aadb61`. Exact local checkout SHA was not queried inside this job, so do not assert exact qualified local source SHA. Classification: `MANUAL_LOCAL` via explicit owner-requested local debugger; NOT GitHub Actions.
