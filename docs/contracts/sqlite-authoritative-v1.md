@@ -105,8 +105,8 @@ CREATE TABLE capability_grants (
   grant_id TEXT NOT NULL REFERENCES client_tool_grants(grant_id) ON DELETE RESTRICT,
   capability_id TEXT NOT NULL,
   scope_jcs TEXT NOT NULL,
-  PRIMARY KEY(grant_id,capability_id),
   version_id TEXT NOT NULL,
+  PRIMARY KEY(grant_id,capability_id),
   FOREIGN KEY(version_id,capability_id) REFERENCES tool_capabilities(version_id,capability_id),
   FOREIGN KEY(grant_id,version_id) REFERENCES client_tool_grants(grant_id,version_id)
 ) STRICT, WITHOUT ROWID;
