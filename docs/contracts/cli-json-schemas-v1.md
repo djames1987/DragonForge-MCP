@@ -4,7 +4,7 @@ Status: Phase 0 normative design proposal, not executable code. C-007A supplies 
 ## Common strict JSON Schema rules
 Use JSON Schema 2020-12, `additionalProperties:false`, every named field required unless explicitly nullable. IDs UUID; digest 64 lowercase hex; timestamp RFC3339 UTC millisecond precision; nonnegative integer revisions; no arbitrary command execution or dynamic schema URLs. All command results share envelope:
 ```json
-{"schema_version":1,"ok":true,"command":"tool list","correlation_id":"00000000-0000-4000-8000-000000000001","data":{},"warnings":[]}
+{"schema_version":1,"ok":true,"command":"CLI-020","correlation_id":"00000000-0000-4000-8000-000000000001","data":{},"warnings":[]}
 ```
 On error omit data, include error {code,message}, no raw secret. Syntax flags turn into admin IPC args with canonical field names. Requests: {protocol:"dfmcp.admin",version:1,request_id,operation:"CLI-NNN",args:{},expected_revision:null|integer,deadline_ms:5000}. No owner SID/client trust assertion in args. JSON output always one object LF, no banners. Unknown/extra fields fail SCHEMA_INVALID. Typed standard shapes: Entity={id,revision,state,created_at}, Page={items:[Entity],next_cursor:string|null}, Validation={valid:boolean,errors:[{code,path,message}]}, Receipt={correlation_id,authority_epoch,revision}, Backup={backup_id,artifact_sha256,authority_epoch,verified:boolean}. Specific command success data requirements below. Each row inherits common envelope and typed syntax from C-007A.
 
@@ -33,3 +33,6 @@ Backup export: owner-interactive offline only; generate 256-bit content encrypti
 
 ## CLI test acceptance
 For CLI-001..054, assert documented required keys/types, no extra sensitive fields, stable error/exit mapping, owner SID enforcement, noninteractive refusal, atomic mutation and audit. Invalid argv, path, JSON, stale revision, unknown command, revoked credential, owner token spoof, key loss and interrupted restore must each produce deterministic nonzero exit. Future qualification T-024; not executed.
+
+## C-007E output semantics clarification (2026-10-23)
+Machine-readable `command` MUST equal canonical operation `CLI-NNN`, not free-form command display text. For list operations, `items` is specialized per client/credential/tool/grant/approval/audit/backup record family. See updated `cli-command-schema-registry-v1.json`. Older text-only `command` examples are superseded. Distinguish JSON Schema fixture conformance from OS-authenticated command execution.

@@ -4,13 +4,13 @@
 ## Protocol, identity and uniform behavior
 Executable name `dfmcp`. All privileged operations use the authenticated owner-only named pipe; no mutating CLI calls via MCP. Authenticate actual OS peer token and expected owner SID, reject elevated/unverified/foreign token mismatches rather than trust user string, PID, `--owner` or environment variable. Diagnostics that display sensitive state require same channel. `--socket` / `--pipe` cannot override trust policy or select arbitrary remote addresses.
 Global flags: `--json` (machine-readable object), `--config <path>` (owner-safe, must not bypass secure configuration validation), `--timeout-ms <integer>` (100–30000 default 5000), `--no-color`, `--help`, `--version`. Unknown flags, duplicate singleton flags, duplicate JSON keys and ambiguous abbreviations rejected. All IDs validated before IPC. `--yes` is **never accepted** for trust, owner approvals, restore, key export, credential recovery or destructive operations; interactive owner confirmation mandatory. Noninteractive sensitive mutations return exit 4.
-On successful `--json`, stdout contains exactly one UTF-8 JSON object followed by LF:
+On successful `--json`, stdout contains exactly one UTF-8 JSON object followed by LF. The machine-readable `command` property is the canonical `CLI-NNN` operation identifier; displayed human-readable CLI syntax remains a separate presentation concern:
 ```json
-{"schema_version":1,"ok":true,"command":"tool list","correlation_id":"<uuid>","data":{},"warnings":[]}
+{"schema_version":1,"ok":true,"command":"CLI-020","correlation_id":"<uuid>","data":{},"warnings":[]}
 ```
 On failure:
 ```json
-{"schema_version":1,"ok":false,"command":"tool trust","correlation_id":"<uuid>","error":{"code":"ACCESS_DENIED","message":"Action not permitted"},"warnings":[]}
+{"schema_version":1,"ok":false,"command":"CLI-022","correlation_id":"<uuid>","error":{"code":"ACCESS_DENIED","message":"Action not permitted"},"warnings":[]}
 ```
 No log banner/progress/color on JSON stdout. stderr reserved for local transport/runtime diagnostics without secrets; errors contain safe stable code and no raw payload. Timestamp fields RFC3339 UTC milliseconds; binary digest shown as 64 lowercase hex; IDs lowercase UUIDs; array ordering deterministic by identifier unless documented. Sensitive credential issuance uses protected one-time interactive output, never persists plaintext in reports or audit or process command arguments. `--json` issuance returns *credential metadata only* and an owner-approved secure OS credential-store reference; no bearer secret in machine-readable history.
 
