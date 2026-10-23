@@ -1,4 +1,6 @@
-# Architecture decision register — DRAFT / awaiting owner ratification
+# Architecture decision register — SELECTED FOR PHASE 0, OWNER FREEZE PENDING
+
+**Status note (2026-10-23):** This register distinguishes *selected architectural behavior* from *future runtime qualification*. Older OPEN phrasing and proposals in this file are historical only. The authority order is owner-approved development rules, owner-directed DEC-001/006, agent-delegated DEC-002..005, then authoritative C-005/C-007/C-010 contracts. No freeze or Phase 1 approval is implied.
 
 Owner-approved product decisions from README.md on 2026-10-21: on-demand server, explicit sensitive-action approval with default deny if unavailable, manual third-party installation and trust, CLI first, simple tool extensibility, Windows 10 first, local only. Technical decisions below are NOT automatically owner-approved.
 
@@ -11,7 +13,7 @@ Consequences: simpler, auditable version boundary but older clients may not conn
 References: https://modelcontextprotocol.io/specification/draft/changelog ; https://py.sdk.modelcontextprotocol.io/whats-new/ (verify pinned released normative text before ratification).
 
 ## ADR-002 — Gateway/worker split
-Status: PROPOSED, BLOCKING.
+Status: SELECTED DESIGN — AGENT DELEGATED; implementation and acceptance verification pending.
 Decision: trusted administrative authority only in gateway; workers use minimal versioned IPC and never hold database writer credentials. Alternative: in-process plugins (rejected for untrusted code). Security consequence: requires qualified OS containment. Tests: T-010,T-011,T-020.
 
 ## ADR-003 — Storage
@@ -28,10 +30,10 @@ Decision: immutable versioned package with digest, schema and declared permissio
 
 ## ADR-006 — Privileged approvals
 Status: PROPOSED, BLOCKING.
-Decision: approval originates only from a trusted owner-controlled local interface, bound to principal, tool digest, argument hash, scope, expiry, nonce and single use. MCP client-supplied approval claims cannot satisfy policy. Alternative: text prompt in model tool arguments (rejected). Test T-013. Exact desktop/CLI approval handshake remains OPEN.
+Decision: approval originates only from a trusted owner-controlled local interface, bound to principal, tool digest, argument hash, scope, expiry, nonce and single use. MCP client-supplied approval claims cannot satisfy policy. Alternative: text prompt in model tool arguments (rejected). Test T-013. Detailed owner-CLI authenticated challenge specified in C-007C; runtime validation is deferred to authorized implementation.
 
 ## ADR-007 — OS isolation
-Status: OPEN, BLOCKING.
+Status: SELECTED FAIL-CLOSED PROFILE — AGENT DELEGATED; Windows build security qualification pending.
 Windows 10 editions vary in availability and behavior of AppContainer, restricted tokens, job objects, ACLs, firewall and desktop interaction. None alone is assumed a complete sandbox. A measured isolation profile must be chosen per tool capability and OS edition before enabling third-party tools. Otherwise deny. Test T-010,T-022.
 
 ## ADR-008 — Audit and secrets
@@ -39,17 +41,17 @@ Status: PROPOSED, BLOCKING.
 Decision: gateway-owned append-only logical audit sequence in SQLite, protect integrity using database ACLs and checked ordering; redact secrets and sensitive arguments. Do not claim tamper resistance against owner/admin or filesystem adversary. Protect credentials under OS user identity. Tests T-006,T-017.
 
 ## ADR-009 — Performance/reliability
-Status: OPEN, non-blocking for initial drafting but required for freeze.
+Status: DELEGATED ACCEPTANCE TARGETS SELECTED; measured performance evidence belongs to later implementation phases.
 Choose agreed hardware tier, tool fixture count, concurrency, resource thresholds, retention, backup interval and crash/restore targets; then derive measurable qualification.
 
 ## Owner ratification questions
 DEC-001 RESOLVED by owner direction: modern-only 2026-07-28 in v1; older revisions excluded unless a future separately approved change adds them.
-DEC-002 Concrete local client identity credential provisioning/rotation mechanism?
-DEC-003 Owner approval UX: authenticated CLI pending-request flow or separate desktop UI?
-DEC-004 Exact Windows security target, measured OS containment, and release resource thresholds?
-DEC-005 Default retention and backup lifecycle?
+DEC-002 SELECTED (delegated): enrolled credentials, gateway-owned verifier, 90-day expiry, at most 24-hour deliberate rotation overlap; see identity-ipc-v1.md.
+DEC-003 SELECTED (delegated): authenticated owner CLI challenge over restricted named pipe; see cli-security-key-formats-v1.md.
+DEC-004 SELECTED (delegated): Windows 10 Home build 19045 x64 owner reference; W0/W1 AppContainer fail closed pending runtime OS qualification; see windows-enforcement-profile-v1.md.
+DEC-005 SELECTED (delegated): 90-day audit metadata, daily encrypted backup/30 points, weekly restore drill; see recovery-reconciliation-v1.md.
 DEC-006 RESOLVED by owner direction: initial release uses **mandatory SHA-256 content pinning and explicit local owner trust**, without mandatory third-party publisher signatures or certificate infrastructure. Optional signature data can be displayed as untrusted informational metadata; it does not bypass digest validation, local owner trust, enablement, grants, approval or isolation. If source attribution is essential for a deployment, the owner must verify publisher separately before trusting. Signing enforcement requires a separate approved versioned policy and qualification.
-DEC-001 and DEC-006 were selected under the owner's explicit instruction to use agent recommendations (2026-10-21). Other decisions remain OPEN and no project-wide documentation freeze is approved.
+DEC-001 and DEC-006 were selected under the owner's explicit instruction to use agent recommendations (2026-10-21). DEC-002..005 are agent-delegated selected designs awaiting collective owner architecture-freeze ratification; no project-wide freeze is approved.
 
 ## DEC-006 — package provenance tradeoff and qualification
 Status: OWNER-DIRECTED CHOICE RECORDED 2026-10-21. Signing is not required for initial release. A cryptographic digest detects modification relative to the pinned bytes **but does not prove who authored those bytes or whether they are safe**. Each complete staged package must be hashed by a deterministic byte-accurate scheme defined in C-002; package paths, symlinks, embedded digest field, canonical encoding and time-of-check/time-of-use are freeze blockers. Trust is a privileged owner-reviewed operation tied to exact (tool ID, version, SHA-256, capabilities), and is invalidated by byte changes. SHA-256 pinning, owner trust, enablement and per-client grants remain separate. Negative fixtures T-008/T-009/T-022 must exercise mutations, reparse points and substitution races. Future signed provenance requires formal scope review, key lifecycle, revocation and authenticity qualification; no unvalidated claimed signature may confer privileges.
