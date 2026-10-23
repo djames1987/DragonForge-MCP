@@ -36,3 +36,6 @@ For CLI-001..054, assert documented required keys/types, no extra sensitive fiel
 
 ## C-007E output semantics clarification (2026-10-23)
 Machine-readable `command` MUST equal canonical operation `CLI-NNN`, not free-form command display text. For list operations, `items` is specialized per client/credential/tool/grant/approval/audit/backup record family. See updated `cli-command-schema-registry-v1.json`. Older text-only `command` examples are superseded. Distinguish JSON Schema fixture conformance from OS-authenticated command execution.
+
+## C-007F — CAS precondition closure (2026-10-23)
+For CLI-007,011,012,022,023,024,025,029,032 the administrative IPC `expected_revision` is REQUIRED as an integer >=1; `null` is invalid even though the field is always present in the common envelope. Read-only/no-CAS operations may use `null`. `deadline_ms` 100..30000 follows the root CLI `--timeout-ms`; CLI-003/004 `grace_ms` is 0..30000, CLI-044 migration `target` >=1. A stale/nonpositive revision must be rejected before semantic mutation and must not bypass the protected audit/receipt transaction. See updated JSON Schema registry. Earlier example fixtures using `null` for all operations are outdated and must regenerate appropriate revisions.
