@@ -113,7 +113,7 @@ CREATE TABLE capability_grants (
 CREATE TABLE pending_approvals (
   approval_id TEXT PRIMARY KEY,
   intent_id TEXT NOT NULL UNIQUE,
-  nonce BLOB NOT NULL UNIQUE CHECK(length(nonce)=16),
+  nonce BLOB NOT NULL UNIQUE CHECK(length(nonce)=32),
   client_id TEXT NOT NULL REFERENCES clients(client_id) ON DELETE RESTRICT,
   version_id TEXT NOT NULL REFERENCES tool_versions(version_id) ON DELETE RESTRICT,
   argument_sha256 BLOB NOT NULL CHECK(length(argument_sha256)=32),
