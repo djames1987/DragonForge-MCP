@@ -56,4 +56,4 @@ Each test above needs concrete raw requests, JSON schema assertions, HTTP status
 - Conformance-suite revision, exact positive/negative transcripts, transport MIME/streaming behavior, cancellation and notification behavior.
 - Complete version-specific JSON-RPC error mapping, optional capability inventory, message-size and time budgets.
 
-**Gate:** C-010 remains NOT implementation-ready until all above details are resolved, tests T-004/T-005/T-021/T-026 have executable-quality documented fixtures (without creating code), and owner accepts ADR-001.
+**Historical gate:** This earliest C-010 proposal has been superseded by C-010A/B/C and the pinned upstream schema for the selected 2026-07-28 revision. Runtime T-004/T-005/T-021/T-026 qualification is scheduled for authorized future implementation have executable-quality documented fixtures (without creating code), and owner accepts ADR-001.

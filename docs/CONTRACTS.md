@@ -38,7 +38,7 @@ Write quiescence or SQLite online backup snapshot under owner-controlled directo
 Each policy decision records UTC time, immutable correlation ID, authenticated principal ID or anonymous marker, tool/digest if applicable, outcome/error classification, and redacted request fingerprint. Never log raw tokens, secrets, or sensitive argument values. Ordered logical append-only audit record in protected SQLite; no claim of admin-resistant tamperproofing. Audit storage failure blocks sensitive mutations.
 
 ## Contract completion gate
-C-001 through C-009 are sketches with known undecided details; NOT implementation-ready. Phase 0 freeze requires detailed schema grammar, API signatures, DDL, transaction matrices, negative-case examples, performance limits and cross-contract test coverage, all reviewed against selected MCP revision.
+This section is a **historical initial contract sketch**. Authoritative Phase 0 supplements below supersede unresolved or outdated clauses: C-005 authoritative SQLite migration, C-007 strict CLI schema/security and C-010 pinned modern MCP wire; read the linked current baseline rather than treating this sketch as the full implementation contract. Architecture-freeze approval is still pending an independent zero-blocker audit; implementation qualification remains future work.
 
 ## New Phase 0 supplemental specifications
 - C-005A: [SQLite schema and transaction contract](contracts/sqlite-authority-schema.md).

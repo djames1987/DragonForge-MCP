@@ -37,8 +37,8 @@ Every test report must contain: test ID; requirement IDs; planned/actual status;
 ## Phased gates
 Phase 1: T-001..T-006, T-021,T-026. Phase 2: T-007..T-013,T-020,T-022. Phase 3: T-014,T-015 and full interoperability cross-client matrix. Phase 4: T-016,T-017,T-023,T-025 plus ratified performance tests. Phase 5: T-018,T-019,T-024 and complete regression matrix. No next phase if failures remain unless owner documents exception.
 
-## Missing before freeze
-Precise fixtures, executable test commands, MCP transcripts per revision, performance workload/percentiles, threat probe methods, supported hardware/OS matrix and verified local runner security are not complete. This matrix is an index, NOT an executable qualification specification.
+## Documentation and future-execution boundary (updated 2026-10-23)
+T-001..T-026 deterministic **future** fixture inputs, expected terminal conditions, cleanup allowlists and the runner interface are indexed in [PHASE0_DETERMINISTIC_T001_T026_FIXTURES.md](PHASE0_DETERMINISTIC_T001_T026_FIXTURES.md) and [QUALIFICATION_EXECUTION_CONTRACT_V1.md](QUALIFICATION_EXECUTION_CONTRACT_V1.md). The owner has reported runner `LAPTOP-JAMES` online and idle but no Actions tests have run. Actual executable harness and Windows OS enforcement proofs are Phase 1–5 tasks, not Phase 0 deliverables. Exact perf thresholds and Windows Home reference target are in [PHASE0_AUTHORITATIVE_DECISIONS_AND_PHASE_DEPENDENCIES.md](PHASE0_AUTHORITATIVE_DECISIONS_AND_PHASE_DEPENDENCIES.md). The independent Phase 0 audit still requires contract-level closure and formal owner freeze approval.
 
 ## Detailed planned suites
 - [Windows confinement qualification](security/windows-confinement-qualification.md), WQ-001 through WQ-012, require independently observed OS denials and build-specific evidence.
