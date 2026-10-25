@@ -62,3 +62,6 @@ Each planned T-ID requires: exact code SHA, prereq schema/migration revision, Wi
 6. Full power/performance fixture acceptance limits and documentation-level exact PowerShell execution commands rely on future authorized harness naming.
 7. Outstanding ADR status reconciliation and final independent freeze audit not completed.
 No owner approval, implementation permission, or freeze is implied.
+
+## Freeze reconciliation — 2026-10-25
+The seven 'Open integration gaps' listed above are the historical pre-freeze worklist, not live unresolved decisions. C-010A/B/C pin upstream 2026-07-28 and the bounded tools-only transport; C-001/C-007C govern enrolled clients and owner IPC; C-005/CP-001 and definitive 19-table SQL govern checkpoint publication; WIN-SEC-003 specifies fail-closed OS-profile qualification; C-007G/H cover root CLI schemas, required identities and 54 command data keys; the T-001..026 fixture/operations documents specify future acceptance; decisions and cross-document review are ratified in `ARCHITECTURE_FREEZE_V1.md` and `PHASE0_FINAL_ZERO_BLOCKER_REVIEW_2026-10-25.md`. Executable harnesses, live OS confinement, cross-file durability, full MCP scored-suite testing and release verification remain **later-phase gates**, not claimed Phase 0 PASS.
