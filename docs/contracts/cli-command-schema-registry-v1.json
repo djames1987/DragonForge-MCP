@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://dragonforge.local/schemas/cli-contract-v1",
   "title": "DragonForge administrative IPC command union",
-  "description": "Phase 0 normative documentation schema; NOT implemented or executed; linked to C-007A and C-007B. C-007D closure: nested fields use explicitly typed definitions; see companion semantic-contract exceptions for dynamic JSON values. C-007E cross-contract semantics: canonical command field is CLI-NNN and list item schemas are per entity family. C-007F revision guard: --if-revision required operations reject null and nonpositive revision; per-command timeouts 100..30000ms. C-007G required client identifier for CLI-010/011/012/013/014/016/027; missing argument rejected before authorization.",
+  "description": "Phase 0 normative documentation schema; NOT implemented or executed; linked to C-007A and C-007B. C-007D closure: nested fields use explicitly typed definitions; see companion semantic-contract exceptions for dynamic JSON values. C-007E cross-contract semantics: canonical command field is CLI-NNN and list item schemas are per entity family. C-007F revision guard: --if-revision required operations reject null and nonpositive revision; per-command timeouts 100..30000ms. C-007G required client identifier for CLI-010/011/012/013/014/016/027; missing argument rejected before authorization. C-007H authoritative root request union generated from same command schemas; root union must reject omitted required fields.",
   "definitions": {
     "error": {
       "type": "object",
@@ -588,7 +588,9 @@
               "format": "uuid"
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "anyOf": [
@@ -643,7 +645,9 @@
               "format": "uuid"
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "type": "integer",
@@ -691,7 +695,9 @@
               "format": "uuid"
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "type": "integer",
@@ -744,7 +750,9 @@
               "maximum": 24
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "anyOf": [
@@ -799,7 +807,9 @@
               "format": "uuid"
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "anyOf": [
@@ -911,7 +921,9 @@
               "format": "uuid"
             }
           },
-          "required": []
+          "required": [
+            "client"
+          ]
         },
         "expected_revision": {
           "anyOf": [
@@ -1616,7 +1628,8 @@
             "tool",
             "version",
             "digest",
-            "kind"
+            "kind",
+            "client"
           ]
         },
         "expected_revision": {
@@ -12985,7 +12998,9 @@
                   "format": "uuid"
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "anyOf": [
@@ -13040,7 +13055,9 @@
                   "format": "uuid"
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "type": "integer",
@@ -13088,7 +13105,9 @@
                   "format": "uuid"
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "type": "integer",
@@ -13141,7 +13160,9 @@
                   "maximum": 24
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "anyOf": [
@@ -13196,7 +13217,9 @@
                   "format": "uuid"
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "anyOf": [
@@ -13308,7 +13331,9 @@
                   "format": "uuid"
                 }
               },
-              "required": []
+              "required": [
+                "client"
+              ]
             },
             "expected_revision": {
               "anyOf": [
@@ -14013,7 +14038,8 @@
                 "tool",
                 "version",
                 "digest",
-                "kind"
+                "kind",
+                "client"
               ]
             },
             "expected_revision": {
