@@ -1,6 +1,6 @@
-# DragonForge MCP — Full Lifecycle Roadmap (Draft)
+# DragonForge MCP — Full Lifecycle Roadmap (Frozen V1)
 
-Status: DRAFT. Subject to full-project documentation review and owner freeze. See [binding rules](DEVELOPMENT_RULES.md). **No coding is authorized.**
+Status: FROZEN V1 documentation under `phase0-architecture-v1` (2026-10-25); see [architecture freeze](ARCHITECTURE_FREEZE_V1.md) and [binding rules](DEVELOPMENT_RULES.md). **Phase 1 implementation remains unauthorized until the owner's separate instruction.**
 
 ## Phase 0 — Document the entire project
 Build the complete implementation-ready, cross-referenced specification for Phases 1–5, including detailed contracts, requirement IDs, ADRs, data models, threat model, error taxonomy, lifecycle, CLI UX, tool authoring, install/trust/enable/grant, worker isolation, security qualification, test fixtures, performance, packaging, migration and rollback. Resolve all blocking open decisions. Publish a traceability matrix and exact-SHA baseline. **Exit:** owner explicitly signs off on documentation freeze and permits coding.

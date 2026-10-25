@@ -2,7 +2,7 @@
 
 **Mandatory:** Read [docs/DEVELOPMENT_RULES.md](docs/DEVELOPMENT_RULES.md) and [docs/ROADMAP.md](docs/ROADMAP.md) in full before any change. These are owner-approved project governance requirements.
 
-Current status (2026-10-21): Phase 0 is documentation-only; the project-wide documentation is incomplete. **DO NOT WRITE implementation code, tests, executable prototypes, scaffolding, or GitHub Actions configurations.** Only documentation work is authorized until the owner approves a complete architecture freeze and explicitly authorizes implementation.
+Current status (2026-10-25): Phase 0 architecture documentation is **FROZEN** under the exact immutable `phase0-architecture-v1` tag and `docs/ARCHITECTURE_FREEZE_V1.md`. **DO NOT WRITE implementation code, executable project tests, prototypes, scaffolding, or GitHub Actions configurations until separate explicit Phase 1 owner implementation authorization.** Documentation freeze/merge alone does not authorize coding.
 
 Before every new phase: audit prior phase evidence, rules, roadmap, frozen specifications, ADRs, and exact repository commit. Record drift evaluation and obtain any necessary approvals.
 

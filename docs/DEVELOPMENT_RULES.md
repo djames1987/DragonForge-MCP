@@ -47,4 +47,4 @@ Status: **APPROVED by project owner on 2026-10-21.** These rules supersede confl
 - [ ] Owner-approved scope and open risks documented
 
 ## Current status
-**Phase 0 is documentation-only and NOT YET COMPLETE. No coding is authorized.** The existing architecture and tool-authoring notes are proposals, not a full documentation freeze.
+**Phase 0 architecture documentation is FROZEN as of 2026-10-25 under immutable `phase0-architecture-v1`, following owner-conditional zero-blocker review (see `ARCHITECTURE_FREEZE_V1.md`). No Phase 1 coding is authorized without separate explicit owner approval.** These 26 rules remain unchanged in force; this is a status update only.
