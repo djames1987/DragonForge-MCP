@@ -1,5 +1,5 @@
 # C-007B — Versioned administrative request and result schemas for CLI-001..054
-Status: Phase 0 normative design proposal, not executable code. C-007A supplies exact command syntax/flags and owner authority. This document supplies machine schema constraints and operation-specific payload contracts.
+Status: FROZEN V1 normative design under `../ARCHITECTURE_FREEZE_V1.md`; not executable implementation code. C-007A supplies exact command syntax/flags and owner authority. This document supplies machine schema constraints and operation-specific payload contracts.
 
 ## Common strict JSON Schema rules
 Use JSON Schema 2020-12, `additionalProperties:false`, every named field required unless explicitly nullable. IDs UUID; digest 64 lowercase hex; timestamp RFC3339 UTC millisecond precision; nonnegative integer revisions; no arbitrary command execution or dynamic schema URLs. All command results share envelope:

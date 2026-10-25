@@ -1,6 +1,6 @@
 # C-003 — Worker IPC wire contract, candidate v0.2
 
-**Status:** PROPOSED / NOT OWNER-RATIFIED. **No implementation or test has been executed.** Extends the C-003 summary in `docs/CONTRACTS.md`; authoritative behavior must be reconciled there before freeze. Applies to R-010, R-011, R-012, R-015, R-016, R-020 and T-010, T-011, T-012, T-015, T-016, T-020. Requires ratification of ADR-002, ADR-007, DEC-004.
+**Status:** FROZEN V1 DESIGN under `../ARCHITECTURE_FREEZE_V1.md`. **No implementation or runtime tests have been executed.** Section 7 controls any earlier proposed field sets. Extends the C-003 summary in `docs/CONTRACTS.md`; authoritative behavior must be reconciled there before freeze. Applies to R-010, R-011, R-012, R-015, R-016, R-020 and T-010, T-011, T-012, T-015, T-016, T-020. Requires ratification of ADR-002, ADR-007, DEC-004.
 
 ## 1. Endpoint and trust ownership
 

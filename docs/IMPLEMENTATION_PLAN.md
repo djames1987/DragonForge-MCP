@@ -1,4 +1,4 @@
-# Implementation phase gates and sequencing — DRAFT
+# Implementation phase gates and sequencing — FROZEN V1 PLAN
 
 This document expands docs/ROADMAP.md without superseding it. All implementation is forbidden until owner approval of complete Phase 0 documentation freeze.
 
@@ -9,7 +9,7 @@ Re-read AGENTS.md, DEVELOPMENT_RULES.md, ROADMAP.md, approved freeze/ADRs/contra
 Prereq: owner-approved governance (already available).
 Sequence: repository audit -> stable requirements -> source-pinned MCP revision -> threat/identity/approval ADRs -> normative manifests/worker/CLI/API schemas -> complete relational schema -> recovery/operations -> quantitative test fixtures -> traceability and consistency audit -> owner ratification.
 Deliverables: architecture freeze, reviewed decisions, complete contract catalog, formal test plan with local commands, zero blocking decision, explicit owner authorization.
-Exit: owner signs exact baseline SHA and explicitly authorizes implementation. Current exit: FAIL/NOT READY.
+Exit: owner signs exact baseline SHA and explicitly authorizes implementation. Documentation architecture frozen 2026-10-25 under immutable `phase0-architecture-v1`. Phase 1 implementation authorization is a distinct owner decision and remains pending; no code may start before it.
 
 ## Phase 1 — Gateway/security foundation
 Prereq: signed Phase 0 freeze.

@@ -1,5 +1,5 @@
 # C-007A — Administrative CLI command and JSON interface contract
-**Status:** agent-delegated proposed contract, not frozen. Windows 10 first. No executable CLI or workflows created during Phase 0. Supports R-002/003/006/007–009/013/016/018/019/023–025, T-002/003/006/007–009/013/016/018/019/023–025. This contract refines C-007, not MCP transport.
+**Status:** FROZEN V1 administrative contract, implementation not yet authorized or tested. Windows 10 first. No executable CLI or workflows created during Phase 0. Supports R-002/003/006/007–009/013/016/018/019/023–025, T-002/003/006/007–009/013/016/018/019/023–025. This contract refines C-007, not MCP transport.
 
 ## Protocol, identity and uniform behavior
 Executable name `dfmcp`. All privileged operations use the authenticated owner-only named pipe; no mutating CLI calls via MCP. Authenticate actual OS peer token and expected owner SID, reject elevated/unverified/foreign token mismatches rather than trust user string, PID, `--owner` or environment variable. Diagnostics that display sensitive state require same channel. `--socket` / `--pipe` cannot override trust policy or select arbitrary remote addresses.

@@ -1,4 +1,4 @@
-# Architecture decision register — SELECTED FOR PHASE 0, OWNER FREEZE PENDING
+# Architecture decision register — FROZEN V1 CHOICES
 
 **Status note (2026-10-23):** This register distinguishes *selected architectural behavior* from *future runtime qualification*. Older OPEN phrasing and proposals in this file are historical only. The authority order is owner-approved development rules, owner-directed DEC-001/006, agent-delegated DEC-002..005, then authoritative C-005/C-007/C-010 contracts. No freeze or Phase 1 approval is implied.
 
@@ -67,4 +67,8 @@ Authority: owner delegation recorded in current Phase 0 handoff. **Status: SELEC
 - **DEC-005** selected (agent delegated): 90-day audit metadata policy, daily encrypted local backups, 30 recovery points, weekly restoration drill and provisional measurable recovery targets.
 - **DEC-006** retained (owner selected): SHA-256 content verification + explicit owner trust, no mandatory publisher signatures.
 
-**Precedence:** The earlier OPEN/PROPOSED entries above are retained as historical draft rationale; where inconsistent with this delegated selection, the decision selection above applies for Phase 0 drafting only. The detailed contracts, SQL DDL, threat model, fixtures, tests and implementation plan must still be reconciled before an architecture freeze. No owner approval of freeze or Phase 1 implementation has been issued. No security test has been executed merely by documenting a selection.
+**Precedence:** The earlier OPEN/PROPOSED entries above are retained as historical draft rationale; where inconsistent with this delegated selection, the decision selection above applies for Phase 0 drafting only. The detailed contracts, SQL DDL, threat model, fixtures, tests and implementation plan must still be reconciled before an architecture freeze. Owner conditionally approved the Phase 0 documentation freeze upon a zero-blocker review on 2026-10-25; satisfied per `PHASE0_FINAL_ZERO_BLOCKER_REVIEW_2026-10-25.md`. Phase 1 implementation remains unapproved. No security test has been executed merely by documenting a selection.
+
+
+## 2026-10-25 freeze ratification
+The owner authorized an architecture freeze once a zero-blocker review was completed. DEC-001/006 remain direct owner choices; selected DEC-002..005 are adopted into frozen V1 via that conditional instruction. This records **design ratification only**, not OS, database durability, package provenance or MCP conformance runtime qualification. Refer to immutable `phase0-architecture-v1` for exact binding content; historical OPEN and PROPOSED labels elsewhere in this file are retained for audit and do not reopen the accepted selections.
