@@ -1,4 +1,4 @@
-# Threat model — DRAFT
+# Threat model — FROZEN V1 DESIGN, runtime controls unqualified
 
 ## Assets and trust
 Assets: client credentials, tool trust records, policy/grants, local files, audit history, execution results, installed native packages and owner approvals. Attackers may be local unprivileged processes under same OS user, malicious MCP clients, malicious downloaded packages, compromised workers, hostile browser origins, and malicious tool updates. A local administrator / fully compromised OS is OUTSIDE claimed isolation guarantees; document this explicitly.

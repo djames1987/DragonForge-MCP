@@ -1,4 +1,4 @@
-# Architecture and execution topology — DRAFT
+# Architecture and execution topology — FROZEN V1 DESIGN
 
 ## Boundary model
 Client host -> local HTTP or STDIO adapter -> MCP protocol dispatcher -> verified client principal -> authorization policy -> tool registry snapshot -> execution scheduler -> worker adapter -> tool implementation.
@@ -45,4 +45,4 @@ Windows 10 first. Define platform interfaces for atomic file replacement, proces
 This is a central tool service, not a general agent orchestration framework. Model lifecycle, prompts, long-term memory, remote management, unrestricted script execution and multimodal interaction are outside the initial release.
 
 ## Architecture freeze gate
-Must ratify MCP revision, authentication/approval transport, worker isolation mechanism, exact persistence/IPC contracts, supported OS editions, security threat model, resource budgets and requirement-to-test mapping. This document is not an architecture freeze.
+Must ratify MCP revision, authentication/approval transport, worker isolation mechanism, exact persistence/IPC contracts, supported OS editions, security threat model, resource budgets and requirement-to-test mapping. This architecture is governed by `ARCHITECTURE_FREEZE_V1.md` and immutable `phase0-architecture-v1`. Runtime implementation and security testing remain unperformed; design freeze does not authorize code.
